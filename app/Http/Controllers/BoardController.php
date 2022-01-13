@@ -71,6 +71,9 @@ class BoardController extends Controller
 
         foreach ($board->columns as $column) {
             $column->load('cards');
+            foreach ($column->cards as $card) {
+                $card->load('users');
+            }
         }
         return response()->json([
             'success' => true,
@@ -102,6 +105,9 @@ class BoardController extends Controller
         foreach ($boards as $board) {
             foreach ($board->columns as $column) {
                 $column->load('cards');
+                foreach ($column->cards as $card) {
+                    $card->load('users');
+                }
             }
         }
         return response()->json([

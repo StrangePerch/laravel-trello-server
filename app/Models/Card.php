@@ -15,4 +15,9 @@ class Card extends Model
     {
         return $this->belongsTo(Column::class);
     }
+
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(User::class, "card_user");
+    }
 }

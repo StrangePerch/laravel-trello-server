@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth:sanctum']], static function () {
     Route::delete('board/delete/{id}', [BoardController::class, 'delete']);
     Route::get('board/updated', [BoardController::class, 'updated']);
     Route::get('board/access/{id}', [BoardController::class, 'getAccessLevel']);
+
     //BOARD/USERS
     Route::post('board/{id}/users/add', [BoardController::class, 'addUser']);
     Route::delete('board/{id}/users/delete/{user_id}', [BoardController::class, 'deleteUser']);
@@ -55,9 +56,13 @@ Route::group(['middleware' => ['auth:sanctum']], static function () {
 
     //CARD
     Route::post('card/store', [CardController::class, 'store']);
+    Route::get('card/get/{id}', [CardController::class, 'get']);
     Route::put('card/edit/{id}', [CardController::class, 'edit']);
     Route::put('card/move/{id}/{to}', [CardController::class, 'move']);
     Route::delete('card/delete/{id}', [CardController::class, 'delete']);
+    //CARD/USERS
+    Route::post('card/{cardId}/users/add/{userId}', [CardController::class, 'addUser']);
+    Route::delete('card/{cardId}/users/delete/{userId}', [CardController::class, 'deleteUser']);
 
 });
 //--------------------------------------------------------------------------

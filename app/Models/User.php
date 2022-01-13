@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Board::class, 'board_user')->withPivot('access_level');
     }
+
+    public function cards(): BelongsToMany
+    {
+        return $this->belongsToMany(Card::class, "card_user");
+    }
 }
